@@ -1,0 +1,90 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://scenes/Planet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://level_shader.shader" type="Shader" id=3]
+[ext_resource path="res://scripts/leve3.gd" type="Script" id=4]
+[ext_resource path="res://textures/prince4.png" type="Texture" id=5]
+[ext_resource path="res://textures/prince2.png" type="Texture" id=6]
+[ext_resource path="res://textures/background.jpg" type="Texture" id=7]
+[ext_resource path="res://textures/prince1.png" type="Texture" id=8]
+[ext_resource path="res://textures/prince3.png" type="Texture" id=9]
+[ext_resource path="res://textures/prince_walk1.png" type="Texture" id=10]
+[ext_resource path="res://textures/prince_walk2.png" type="Texture" id=11]
+[ext_resource path="res://textures/prince_walk3.png" type="Texture" id=12]
+[ext_resource path="res://textures/planeta3.png" type="Texture" id=13]
+[ext_resource path="res://textures/ambitious1.png" type="Texture" id=14]
+[ext_resource path="res://textures/ambitious2.png" type="Texture" id=15]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+shader_param/angle = 0.0
+shader_param/resolution = Vector2( 720, 480 )
+shader_param/night = ExtResource( 7 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 14.9782, 51.9935 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 9 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
+
+[node name="level" type="Node2D"]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="background" type="ColorRect" parent="."]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 720.0
+margin_bottom = 480.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="can_rotate" type="Position2D" parent="."]
+position = Vector2( 360, 395 )
+rotation = -6.28319
+
+[node name="Planet" parent="can_rotate" instance=ExtResource( 1 )]
+scale = Vector2( 3.4, 3.4 )
+texture = ExtResource( 13 )
+
+[node name="ambitious" type="Area2D" parent="can_rotate"]
+position = Vector2( 220, -10 )
+rotation = 1.57643
+
+[node name="sprite" type="AnimatedSprite" parent="can_rotate/ambitious"]
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 2 )
+frame = 1
+playing = true
+
+[node name="shape" type="CollisionShape2D" parent="can_rotate/ambitious"]
+position = Vector2( -0.976471, 4.00555 )
+shape = SubResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 360, 190 )
+frames = SubResource( 4 )
+frame = 2
