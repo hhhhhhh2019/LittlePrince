@@ -76,7 +76,7 @@ scale = Vector2( 0.12, 0.12 )
 
 [node name="sprite" type="AnimatedSprite" parent="can_rotate/snicker"]
 frames = SubResource( 2 )
-frame = 10
+frame = 6
 playing = true
 
 [node name="shape" type="CollisionShape2D" parent="can_rotate/snicker"]
@@ -85,4 +85,4 @@ shape = SubResource( 3 )
 [node name="Player" parent="." instance=ExtResource( 16 )]
 position = Vector2( 360, 190 )
 frames = SubResource( 4 )
-frame = 5
+frame = 2

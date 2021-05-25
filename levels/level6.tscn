@@ -108,4 +108,4 @@ shape = SubResource( 4 )
 [node name="Player" parent="." instance=ExtResource( 17 )]
 position = Vector2( 360, 190 )
 frames = SubResource( 5 )
-frame = 5
+frame = 2

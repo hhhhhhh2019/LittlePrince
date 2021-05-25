@@ -28,6 +28,8 @@ var asks = {
 	"worker_complete": "",
 	"lamper": "Принц: Добрый день. Почему ты сейчас погасил фонарь?\nФонарщик: Такой уговор. Добрый день.",
 	"lapmer_comlete": "sfsaf",
+	"geo": "",
+	"geo_complete": ""
 }
 
 

@@ -8,8 +8,8 @@ func _ready():
 	G.quest_level = self
 
 func back():
-	G.quest3_complete = true
-	G.load_level(3)
+	G.quest4_complete = true
+	G.load_level(4)
 
 
 func _on_jump_body_entered(body):
